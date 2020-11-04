@@ -1,8 +1,11 @@
 import React from 'react';
 
 import moment from 'moment';
+import { auth } from '../firebase';
 
 const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
+  const signOutHandler = () => auth.signOut();
+
   return (
     <section className="CurrentUser">
       <div className="CurrentUser--profile">
@@ -15,7 +18,7 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
       </div>
       <div>
         <div>{children}</div>
-        <button>Sign Out</button>
+        <button onClick={signOutHandler}>Sign Out</button>
       </div>
     </section>
   );
